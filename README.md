@@ -89,12 +89,6 @@ Open [http://localhost:3000](http://localhost:3000)
 - [ ] ALEX / Velar integration
 - [ ] Security audit
 
-## Security
-
-- No mnemonics or private keys in repository
-- `settings/` and `.claude/` folders in `.gitignore`
-- Post-conditions on contract calls
-
 ## Links
 
 - [Stacks](https://stacks.co)
