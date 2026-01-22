@@ -262,9 +262,23 @@ export default function Home() {
 
     const checkEthTxStatus = async (txHash: string) => {
       try {
-        const response = await fetch(`https://sepolia.etherscan.io/api?module=transaction&action=gettxreceiptstatus&txhash=${txHash}`);
+        // Use public RPC to check tx receipt directly
+        const response = await fetch('https://rpc.sepolia.org', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            jsonrpc: '2.0',
+            method: 'eth_getTransactionReceipt',
+            params: [txHash],
+            id: 1,
+          }),
+        });
         const data = await response.json();
-        return data.result?.status === '1' ? 'completed' : data.result?.status === '0' ? 'failed' : 'pending';
+        if (data.result) {
+          // status: 0x1 = success, 0x0 = failed
+          return data.result.status === '0x1' ? 'completed' : 'failed';
+        }
+        return 'pending'; // No receipt yet
       } catch {
         return 'pending';
       }
