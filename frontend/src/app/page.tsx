@@ -818,124 +818,122 @@ export default function Home() {
 
       {selectedNetwork === 'mainnet' ? (
         /* Mainnet Coming Soon */
-        <div className="max-w-4xl mx-auto px-6 py-12">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--stacks-purple)]/10 text-[var(--stacks-purple)] text-sm font-medium mb-6">
-              <div className="w-2 h-2 rounded-full bg-[var(--stacks-purple)] animate-pulse" />
-              Mainnet Coming Soon
-            </div>
-            <h1 className="text-3xl font-bold mb-3">Mainnet Launch in Progress</h1>
-            <p className="text-[var(--text-muted)]">Vault deployment and yield integrations underway</p>
+        <div className="max-w-6xl mx-auto px-6 py-8">
+          {/* Title */}
+          <div className="text-center mb-10 animate-fade-in">
+            <h1 className="text-4xl md:text-5xl font-display mb-4 tracking-tight">
+              Mainnet <span className="text-[var(--stacks-purple)]">Coming Soon</span>
+            </h1>
+            <p className="text-lg text-[var(--text-muted)]">Vault deployment and yield integrations underway</p>
           </div>
 
-          {/* Protocol Integrations Preview */}
-          <div className="space-y-6">
-            <h2 className="text-lg font-semibold text-center">Yield Protocol Integrations</h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* Protocol Integrations */}
+          <div className="mb-8">
+            <p className="section-title text-center mb-6">Yield Protocol Integrations</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Zest Protocol */}
-              <div className="card p-5 border-2 border-dashed border-[var(--border-medium)] opacity-75">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-bold">Z</div>
+              <div className="card p-6 space-y-5 animate-fade-in-up delay-75">
+                <div className="flex items-center gap-4 pb-4 border-b border-[var(--border-light)]">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white text-xl font-bold">Z</div>
                   <div>
-                    <p className="font-semibold">Zest Protocol</p>
+                    <p className="font-semibold text-lg">Zest Protocol</p>
                     <p className="text-xs text-[var(--text-muted)]">Lending & Borrowing</p>
                   </div>
                 </div>
-                <div className="space-y-2 text-sm text-[var(--text-muted)]">
+                <div className="space-y-3 text-sm">
                   <div className="flex justify-between">
-                    <span>Supply APY</span>
-                    <span className="font-mono">~5-8%</span>
+                    <span className="text-[var(--text-muted)]">Supply APY</span>
+                    <span className="font-mono font-semibold">~5-8%</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>TVL</span>
-                    <span className="font-mono">$50M+</span>
+                    <span className="text-[var(--text-muted)]">TVL</span>
+                    <span className="font-mono font-semibold">$50M+</span>
                   </div>
                 </div>
-                <div className="mt-4 pt-3 border-t border-[var(--border-light)]">
-                  <span className="text-xs text-[var(--stacks-purple)]">Primary yield source</span>
+                <div className="pt-3 border-t border-[var(--border-light)]">
+                  <span className="text-xs text-[var(--success)] font-medium">Primary yield source</span>
                 </div>
               </div>
 
               {/* ALEX */}
-              <div className="card p-5 border-2 border-dashed border-[var(--border-medium)] opacity-75">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center text-white font-bold">A</div>
+              <div className="card p-6 space-y-5 animate-fade-in-up delay-150">
+                <div className="flex items-center gap-4 pb-4 border-b border-[var(--border-light)]">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center text-white text-xl font-bold">A</div>
                   <div>
-                    <p className="font-semibold">ALEX</p>
+                    <p className="font-semibold text-lg">ALEX</p>
                     <p className="text-xs text-[var(--text-muted)]">DEX & Orderbook</p>
                   </div>
                 </div>
-                <div className="space-y-2 text-sm text-[var(--text-muted)]">
+                <div className="space-y-3 text-sm">
                   <div className="flex justify-between">
-                    <span>LP APY</span>
-                    <span className="font-mono">~3-12%</span>
+                    <span className="text-[var(--text-muted)]">LP APY</span>
+                    <span className="font-mono font-semibold">~3-12%</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>TVL</span>
-                    <span className="font-mono">$30M+</span>
+                    <span className="text-[var(--text-muted)]">TVL</span>
+                    <span className="font-mono font-semibold">$30M+</span>
                   </div>
                 </div>
-                <div className="mt-4 pt-3 border-t border-[var(--border-light)]">
-                  <span className="text-xs text-[var(--text-muted)]">Liquidity provision</span>
+                <div className="pt-3 border-t border-[var(--border-light)]">
+                  <span className="text-xs text-[var(--text-muted)] font-medium">Liquidity provision</span>
                 </div>
               </div>
 
               {/* Velar */}
-              <div className="card p-5 border-2 border-dashed border-[var(--border-medium)] opacity-75">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold">V</div>
+              <div className="card p-6 space-y-5 animate-fade-in-up delay-200">
+                <div className="flex items-center gap-4 pb-4 border-b border-[var(--border-light)]">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white text-xl font-bold">V</div>
                   <div>
-                    <p className="font-semibold">Velar</p>
+                    <p className="font-semibold text-lg">Velar</p>
                     <p className="text-xs text-[var(--text-muted)]">Perpetuals & AMM</p>
                   </div>
                 </div>
-                <div className="space-y-2 text-sm text-[var(--text-muted)]">
+                <div className="space-y-3 text-sm">
                   <div className="flex justify-between">
-                    <span>Staking APY</span>
-                    <span className="font-mono">~4-10%</span>
+                    <span className="text-[var(--text-muted)]">Staking APY</span>
+                    <span className="font-mono font-semibold">~4-10%</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>TVL</span>
-                    <span className="font-mono">$15M+</span>
+                    <span className="text-[var(--text-muted)]">TVL</span>
+                    <span className="font-mono font-semibold">$15M+</span>
                   </div>
                 </div>
-                <div className="mt-4 pt-3 border-t border-[var(--border-light)]">
-                  <span className="text-xs text-[var(--text-muted)]">Future integration</span>
+                <div className="pt-3 border-t border-[var(--border-light)]">
+                  <span className="text-xs text-[var(--text-muted)] font-medium">Future integration</span>
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Roadmap */}
-            <div className="card p-6 mt-8">
-              <h3 className="font-semibold mb-4">Mainnet Roadmap</h3>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[var(--success)] flex items-center justify-center">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-sm">Smart contracts ready</span>
+          {/* Roadmap */}
+          <div className="card p-6 animate-fade-in-up delay-300">
+            <h3 className="font-display text-xl mb-6">Mainnet Roadmap</h3>
+            <div className="space-y-4">
+              <div className="flex items-center gap-4">
+                <div className="w-8 h-8 rounded-full bg-[var(--success)] flex items-center justify-center flex-shrink-0">
+                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                  </svg>
                 </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[var(--warning)] flex items-center justify-center">
-                    <div className="w-2 h-2 rounded-full bg-white" />
-                  </div>
-                  <span className="text-sm">Vault deployment & testing</span>
+                <span className="font-medium">Smart contracts ready</span>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="w-8 h-8 rounded-full bg-[var(--warning)] flex items-center justify-center flex-shrink-0">
+                  <div className="w-2.5 h-2.5 rounded-full bg-white" />
                 </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[var(--bg-tertiary)] border border-[var(--border-medium)]" />
-                  <span className="text-sm text-[var(--text-muted)]">Zest Protocol integration</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[var(--bg-tertiary)] border border-[var(--border-medium)]" />
-                  <span className="text-sm text-[var(--text-muted)]">Security audit</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[var(--bg-tertiary)] border border-[var(--border-medium)]" />
-                  <span className="text-sm text-[var(--text-muted)]">Public mainnet launch</span>
-                </div>
+                <span className="font-medium">Vault deployment & testing</span>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="w-8 h-8 rounded-full bg-[var(--bg-tertiary)] border-2 border-[var(--border-medium)] flex-shrink-0" />
+                <span className="text-[var(--text-muted)]">Zest Protocol integration</span>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="w-8 h-8 rounded-full bg-[var(--bg-tertiary)] border-2 border-[var(--border-medium)] flex-shrink-0" />
+                <span className="text-[var(--text-muted)]">Security audit</span>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="w-8 h-8 rounded-full bg-[var(--bg-tertiary)] border-2 border-[var(--border-medium)] flex-shrink-0" />
+                <span className="text-[var(--text-muted)]">Public mainnet launch</span>
               </div>
             </div>
           </div>
