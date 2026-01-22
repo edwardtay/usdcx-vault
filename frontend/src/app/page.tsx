@@ -1184,14 +1184,13 @@ export default function Home() {
                     >
                       View <IconExternal className="w-3 h-3" />
                     </a>
-                    {(tx.status === 'completed' || tx.status === 'failed') && (
-                      <button
-                        onClick={() => removePendingTx(tx.id)}
-                        className="p-1 hover:bg-[var(--border-light)] rounded"
-                      >
-                        <IconClose className="w-4 h-4 text-[var(--text-muted)]" />
-                      </button>
-                    )}
+                    <button
+                      onClick={() => removePendingTx(tx.id)}
+                      className="p-1 hover:bg-[var(--border-light)] rounded"
+                      title="Dismiss"
+                    >
+                      <IconClose className="w-4 h-4 text-[var(--text-muted)]" />
+                    </button>
                   </div>
                 </div>
               ))}
