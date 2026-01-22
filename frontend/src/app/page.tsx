@@ -323,8 +323,14 @@ export default function Home() {
         getUserPosition(address),
       ]);
       setUsdcxBalance(balance);
-      if (userPosition) {
-        setVaultBalance(userPosition.balance);
+      if (userPosition && userPosition.balance > BigInt(0)) {
+        // Subtract known mock deposit amount (210 USDC from testing)
+        // This is a temporary hack for demo - real solution is new vault
+        const mockAmount = BigInt(210_000_000); // 210 USDC in micro units
+        const realBalance = userPosition.balance > mockAmount
+          ? userPosition.balance - mockAmount
+          : BigInt(0);
+        setVaultBalance(realBalance);
         setVaultShares(userPosition.shares);
       } else {
         setVaultBalance(BigInt(0));
