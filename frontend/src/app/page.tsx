@@ -338,13 +338,7 @@ export default function Home() {
       ]);
       setUsdcxBalance(balance);
       if (userPosition && userPosition.balance > BigInt(0)) {
-        // Subtract known mock deposit amount (210 USDC from testing)
-        // This is a temporary hack for demo - real solution is new vault
-        const mockAmount = BigInt(210_000_000); // 210 USDC in micro units
-        const realBalance = userPosition.balance > mockAmount
-          ? userPosition.balance - mockAmount
-          : BigInt(0);
-        setVaultBalance(realBalance);
+        setVaultBalance(userPosition.balance);
         setVaultShares(userPosition.shares);
       } else {
         setVaultBalance(BigInt(0));
@@ -699,7 +693,7 @@ export default function Home() {
       <header className="sticky top-0 z-50 bg-[var(--bg-secondary)] border-b border-[var(--border-light)]">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center gap-4">
-            <Image src="/logo.png" alt="USDCx Vault" width={48} height={48} className="w-12 h-12" />
+            <Image src="/logo.svg" alt="USDCx Vault" width={48} height={48} className="w-12 h-12" />
             <span className="font-bold text-lg">USDCx Vault</span>
             <div className="flex items-center bg-[var(--bg-tertiary)] rounded-lg p-1 text-xs">
               <button
@@ -1100,7 +1094,7 @@ export default function Home() {
           {/* Column 3: Vault */}
           <div className="card-highlight p-5 space-y-4">
             <div className="flex items-center gap-4 pb-3 border-b border-[var(--stacks-orange)]/20">
-              <Image src="/logo.png" alt="Vault" width={80} height={80} className="w-20 h-20" />
+              <Image src="/logo.svg" alt="Vault" width={80} height={80} className="w-20 h-20" />
               <div>
                 <p className="font-semibold">Stacks USDCx Vault</p>
                 <p className="text-xs text-[var(--success)]">Earning {apy}% APY</p>

@@ -5,8 +5,8 @@ export const metadata: Metadata = {
   title: 'USDCx Vault | Earn Yield on Bitcoin',
   description: 'Earn yield on USDC secured by Bitcoin via Stacks',
   icons: {
-    icon: '/logo.png',
-    apple: '/logo.png',
+    icon: '/logo.svg',
+    apple: '/logo.svg',
   },
 };
 
