@@ -690,21 +690,23 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[var(--bg-primary)]">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-[var(--bg-secondary)] border-b border-[var(--border-light)]">
+      <header className="sticky top-0 z-50 header-blur">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-4">
-            <Image src="/logo.svg" alt="USDCx Vault" width={48} height={48} className="w-12 h-12" />
-            <span className="font-bold text-lg">USDCx Vault</span>
-            <div className="flex items-center bg-[var(--bg-tertiary)] rounded-lg p-1 text-xs">
+          <div className="flex items-center gap-5">
+            <div className="flex items-center gap-3">
+              <Image src="/logo.svg" alt="USDCx Vault" width={44} height={44} className="w-11 h-11" />
+              <span className="font-display text-xl tracking-tight">USDCx Vault</span>
+            </div>
+            <div className="flex items-center bg-[var(--bg-tertiary)] rounded-lg p-1 text-xs border border-[var(--border-light)]">
               <button
                 onClick={() => setSelectedNetwork('testnet')}
-                className={`px-3 py-1 rounded-md font-medium transition-colors ${selectedNetwork === 'testnet' ? 'bg-[var(--stacks-orange)] text-white' : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'}`}
+                className={`px-4 py-1.5 rounded-md font-semibold transition-all duration-200 ${selectedNetwork === 'testnet' ? 'bg-[var(--stacks-orange)] text-white shadow-lg shadow-[var(--stacks-orange)]/20' : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'}`}
               >
                 Testnet
               </button>
               <button
                 onClick={() => setSelectedNetwork('mainnet')}
-                className={`px-3 py-1 rounded-md font-medium transition-colors ${selectedNetwork === 'mainnet' ? 'bg-[var(--stacks-purple)] text-white' : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'}`}
+                className={`px-4 py-1.5 rounded-md font-semibold transition-all duration-200 ${selectedNetwork === 'mainnet' ? 'bg-[var(--stacks-purple)] text-white shadow-lg shadow-[var(--stacks-purple)]/20' : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'}`}
               >
                 Mainnet
               </button>
@@ -726,7 +728,7 @@ export default function Home() {
                   </svg>
                 </button>
                 {ethMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-48 bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-xl shadow-lg overflow-hidden z-50">
+                  <div className="absolute right-0 mt-2 w-48 wallet-menu z-50">
                     <button
                       onClick={() => { copyToClipboard(ethAddress); setEthMenuOpen(false); }}
                       className="w-full px-4 py-3 text-left hover:bg-[var(--bg-tertiary)] flex items-center gap-2"
@@ -775,7 +777,7 @@ export default function Home() {
                   </svg>
                 </button>
                 {stacksMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-48 bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-xl shadow-lg overflow-hidden z-50">
+                  <div className="absolute right-0 mt-2 w-48 wallet-menu z-50">
                     <button
                       onClick={() => { copyToClipboard(stacksAddress); setStacksMenuOpen(false); }}
                       className="w-full px-4 py-3 text-left hover:bg-[var(--bg-tertiary)] flex items-center gap-2"
@@ -940,32 +942,40 @@ export default function Home() {
       ) : (
       <div className="max-w-6xl mx-auto px-6 py-8">
         {/* Title */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold mb-2">Earn <span className="text-[var(--stacks-orange)]">{apy}% APY</span> on USDC</h1>
-          <p className="text-[var(--text-muted)]">Bridge, deposit, and earn yield secured by Bitcoin</p>
+        <div className="text-center mb-10 animate-fade-in">
+          <div className="inline-flex items-center gap-2 apy-badge mb-6">
+            <span className="w-2 h-2 rounded-full bg-[var(--stacks-orange)] animate-pulse"></span>
+            <span>Live on Testnet</span>
+          </div>
+          <h1 className="text-4xl md:text-5xl font-display mb-4 tracking-tight">
+            Earn <span className="text-[var(--stacks-orange)] text-glow-orange">{apy}% APY</span> on USDC
+          </h1>
+          <p className="text-lg text-[var(--text-muted)]">Bridge, deposit, and earn yield secured by Bitcoin</p>
         </div>
 
         {/* 3 Column Layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
 
           {/* Column 1: Ethereum USDC */}
-          <div className="card p-5 space-y-4">
-            <div className="flex items-center gap-4 pb-3 border-b border-[var(--border-light)]">
-              <svg className="w-16 h-16" viewBox="0 0 24 24" fill="none">
-                <path d="M12 1.5L5.5 12.25L12 16L18.5 12.25L12 1.5Z" fill="#627EEA"/>
-                <path d="M12 16L5.5 12.25L12 22.5L18.5 12.25L12 16Z" fill="#627EEA" fillOpacity="0.6"/>
-              </svg>
+          <div className="card p-6 space-y-5 animate-fade-in-up delay-75">
+            <div className="flex items-center gap-4 pb-4 border-b border-[var(--border-light)]">
+              <div className="w-14 h-14 rounded-2xl bg-[#627EEA]/10 flex items-center justify-center">
+                <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 1.5L5.5 12.25L12 16L18.5 12.25L12 1.5Z" fill="#627EEA"/>
+                  <path d="M12 16L5.5 12.25L12 22.5L18.5 12.25L12 16Z" fill="#627EEA" fillOpacity="0.6"/>
+                </svg>
+              </div>
               <div>
-                <p className="font-semibold">Ethereum USDC</p>
+                <p className="font-semibold text-lg">Ethereum USDC</p>
                 <p className="text-xs text-[var(--text-muted)]">Sepolia Testnet</p>
               </div>
             </div>
 
             {ethAddress ? (
               <>
-                <div className="text-center py-4">
-                  <p className="text-3xl font-bold stat-value">${formatEthUsdc(ethUsdcBalance)}</p>
-                  <p className="text-xs text-[var(--text-muted)] mt-1">Available to Bridge</p>
+                <div className="text-center py-6">
+                  <p className="value-large stat-value">${formatEthUsdc(ethUsdcBalance)}</p>
+                  <p className="text-sm text-[var(--text-muted)] mt-2">Available to Bridge</p>
                 </div>
 
                 {stacksAddress && (
@@ -1014,22 +1024,24 @@ export default function Home() {
           </div>
 
           {/* Column 2: Stacks USDCx */}
-          <div className="card p-5 space-y-4">
-            <div className="flex items-center gap-4 pb-3 border-b border-[var(--border-light)]">
-              <svg className="w-16 h-16" viewBox="0 0 160 160" fill="#5546FF">
-                <path d="M112.5,122L95.3,95H120V84.8H39v10.2h24.7L46.5,122h12.8l20.2-31.7L99.7,122H112.5z M120,74.9V64.7H95.8l17-26.7H99.9L79.5,70.2L59.1,38H46.2l17,26.7H39V75L120,74.9L120,74.9z"/>
-              </svg>
+          <div className="card p-6 space-y-5 animate-fade-in-up delay-150">
+            <div className="flex items-center gap-4 pb-4 border-b border-[var(--border-light)]">
+              <div className="w-14 h-14 rounded-2xl bg-[var(--stacks-purple)]/10 flex items-center justify-center">
+                <svg className="w-8 h-8" viewBox="0 0 160 160" fill="var(--stacks-purple)">
+                  <path d="M112.5,122L95.3,95H120V84.8H39v10.2h24.7L46.5,122h12.8l20.2-31.7L99.7,122H112.5z M120,74.9V64.7H95.8l17-26.7H99.9L79.5,70.2L59.1,38H46.2l17,26.7H39V75L120,74.9L120,74.9z"/>
+                </svg>
+              </div>
               <div>
-                <p className="font-semibold">Stacks USDCx</p>
+                <p className="font-semibold text-lg">Stacks USDCx</p>
                 <p className="text-xs text-[var(--text-muted)]">Testnet</p>
               </div>
             </div>
 
             {stacksAddress ? (
               <>
-                <div className="text-center py-4">
-                  <p className="text-3xl font-bold stat-value text-[var(--stacks-purple)]">${formatUSDCx(usdcxBalance)}</p>
-                  <p className="text-xs text-[var(--text-muted)] mt-1">Available to Deposit</p>
+                <div className="text-center py-6">
+                  <p className="value-large stat-value text-[var(--stacks-purple)]">${formatUSDCx(usdcxBalance)}</p>
+                  <p className="text-sm text-[var(--text-muted)] mt-2">Available to Deposit</p>
                 </div>
 
                 <div className="space-y-3">
@@ -1092,20 +1104,23 @@ export default function Home() {
           </div>
 
           {/* Column 3: Vault */}
-          <div className="card-highlight p-5 space-y-4">
-            <div className="flex items-center gap-4 pb-3 border-b border-[var(--stacks-orange)]/20">
-              <Image src="/logo.svg" alt="Vault" width={80} height={80} className="w-20 h-20" />
+          <div className="card-highlight p-6 space-y-5 animate-fade-in-up delay-200">
+            <div className="flex items-center gap-4 pb-4 border-b border-[var(--stacks-orange)]/20">
+              <div className="relative">
+                <Image src="/logo.svg" alt="Vault" width={64} height={64} className="w-16 h-16" />
+                <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[var(--success)] border-2 border-[var(--bg-secondary)] animate-pulse"></div>
+              </div>
               <div>
-                <p className="font-semibold">Stacks USDCx Vault</p>
-                <p className="text-xs text-[var(--success)]">Earning {apy}% APY</p>
+                <p className="font-semibold text-lg">USDCx Vault</p>
+                <p className="text-sm text-[var(--success)] font-medium">Earning {apy}% APY</p>
               </div>
             </div>
 
             {stacksAddress ? (
               <>
-                <div className="text-center py-4">
-                  <p className="text-3xl font-bold stat-value text-[var(--stacks-orange)]">${formatUSDCx(vaultBalance)}</p>
-                  <p className="text-xs text-[var(--text-muted)] mt-1">Vault Balance</p>
+                <div className="text-center py-6">
+                  <p className="value-large stat-value text-[var(--stacks-orange)] text-glow-orange">${formatUSDCx(vaultBalance)}</p>
+                  <p className="text-sm text-[var(--text-muted)] mt-2">Vault Balance</p>
                 </div>
 
                 {vaultBalance > BigInt(0) && (
@@ -1208,32 +1223,40 @@ export default function Home() {
 
         {/* Portfolio Summary */}
         {(stacksAddress || ethAddress) && (
-          <div className="card p-6">
-            <h2 className="font-bold text-lg mb-4">Portfolio Summary</h2>
+          <div className="card p-6 animate-fade-in-up delay-300">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="font-display text-xl">Portfolio Summary</h2>
+              {vaultBalance > BigInt(0) && (
+                <div className="flex items-center gap-2 text-sm text-[var(--success)]">
+                  <div className="w-2 h-2 rounded-full bg-[var(--success)] animate-pulse"></div>
+                  <span>Earning yield</span>
+                </div>
+              )}
+            </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <div>
-                <p className="text-xs text-[var(--text-muted)] mb-1">Total Value</p>
-                <p className="text-2xl font-bold">${totalValue.toFixed(2)}</p>
+              <div className="space-y-1">
+                <p className="section-title">Total Value</p>
+                <p className="value-medium">${totalValue.toFixed(2)}</p>
               </div>
-              <div>
-                <p className="text-xs text-[var(--text-muted)] mb-1">In Vault (Earning)</p>
-                <p className="text-2xl font-bold text-[var(--stacks-orange)]">${formatUSDCx(vaultBalance)}</p>
+              <div className="space-y-1">
+                <p className="section-title">In Vault</p>
+                <p className="value-medium text-[var(--stacks-orange)]">${formatUSDCx(vaultBalance)}</p>
               </div>
-              <div>
-                <p className="text-xs text-[var(--text-muted)] mb-1">Est. Yearly Yield</p>
-                <p className="text-2xl font-bold text-[var(--success)]">+${yearlyYield.toFixed(2)}</p>
+              <div className="space-y-1">
+                <p className="section-title">Est. Yearly</p>
+                <p className="value-medium text-[var(--success)]">+${yearlyYield.toFixed(2)}</p>
               </div>
-              <div>
-                <p className="text-xs text-[var(--text-muted)] mb-1">Est. Monthly Yield</p>
-                <p className="text-2xl font-bold text-[var(--success)]">+${(yearlyYield / 12).toFixed(2)}</p>
+              <div className="space-y-1">
+                <p className="section-title">Est. Monthly</p>
+                <p className="value-medium text-[var(--success)]">+${(yearlyYield / 12).toFixed(2)}</p>
               </div>
             </div>
 
             {vaultBalance > BigInt(0) && (
               <div className="mt-6 pt-4 border-t border-[var(--border-light)]">
-                <div className="flex items-center justify-between text-sm">
+                <div className="flex items-center justify-between">
                   <span className="text-[var(--text-muted)]">Daily Earnings</span>
-                  <span className="text-[var(--success)]">+${(yearlyYield / 365).toFixed(4)}</span>
+                  <span className="font-mono text-[var(--success)] font-medium">+${(yearlyYield / 365).toFixed(4)}</span>
                 </div>
               </div>
             )}
@@ -1255,29 +1278,29 @@ export default function Home() {
         {toasts.map((toast) => (
           <div
             key={toast.id}
-            className={`p-4 rounded-xl shadow-lg border backdrop-blur-sm animate-slide-in ${
+            className={`p-4 shadow-2xl animate-slide-in ${
               toast.type === 'success'
-                ? 'bg-green-50 border-green-200 text-green-800'
+                ? 'toast-success'
                 : toast.type === 'error'
-                ? 'bg-red-50 border-red-200 text-red-800'
-                : 'bg-blue-50 border-blue-200 text-blue-800'
+                ? 'toast-error'
+                : 'toast-info'
             }`}
           >
             <div className="flex items-start gap-3">
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-                toast.type === 'success' ? 'bg-green-100' : toast.type === 'error' ? 'bg-red-100' : 'bg-blue-100'
+              <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${
+                toast.type === 'success' ? 'bg-[var(--success)]/20' : toast.type === 'error' ? 'bg-[var(--error)]/20' : 'bg-[var(--stacks-purple)]/20'
               }`}>
                 {toast.type === 'success' ? (
-                  <IconCheck className="w-5 h-5 text-green-600" />
+                  <IconCheck className="w-5 h-5 text-[var(--success)]" />
                 ) : toast.type === 'error' ? (
-                  <IconClose className="w-5 h-5 text-red-600" />
+                  <IconClose className="w-5 h-5 text-[var(--error)]" />
                 ) : (
-                  <IconLoader className="w-5 h-5 text-blue-600" />
+                  <IconLoader className="w-5 h-5 text-[var(--stacks-purple)]" />
                 )}
               </div>
               <div className="flex-1 min-w-0">
-                <p className="font-semibold">{toast.title}</p>
-                <p className="text-sm opacity-80 mt-0.5">{toast.message}</p>
+                <p className="font-semibold text-[var(--text-primary)]">{toast.title}</p>
+                <p className="text-sm text-[var(--text-muted)] mt-0.5">{toast.message}</p>
                 {toast.txHash && (
                   <a
                     href={toast.txType === 'eth'
@@ -1286,7 +1309,7 @@ export default function Home() {
                     }
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 mt-2 text-sm font-medium hover:underline"
+                    className="inline-flex items-center gap-1 mt-2 text-sm font-medium text-[var(--stacks-orange)] hover:underline"
                   >
                     View Transaction
                     <IconExternal className="w-3 h-3" />
@@ -1295,9 +1318,9 @@ export default function Home() {
               </div>
               <button
                 onClick={() => removeToast(toast.id)}
-                className="p-1 hover:bg-black/5 rounded-lg transition-colors flex-shrink-0"
+                className="p-1.5 hover:bg-[var(--bg-tertiary)] rounded-lg transition-colors flex-shrink-0"
               >
-                <IconClose className="w-4 h-4" />
+                <IconClose className="w-4 h-4 text-[var(--text-muted)]" />
               </button>
             </div>
           </div>
