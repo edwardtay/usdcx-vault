@@ -36,7 +36,7 @@ export const CONTRACTS = {
   },
   testnet: {
     VAULT_ADDRESS: 'ST2ZBRP21Z92YFT212XHZGF2G48HCPGBC8HBB8838',
-    VAULT_NAME: 'usdcx-vault-testnet',
+    VAULT_NAME: 'usdcx-vault-v2',
     // Real USDCx (Circle xReserve bridged)
     USDCX_ADDRESS: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
     USDCX_NAME: 'usdcx',

@@ -59,3 +59,4 @@ contracts/yield-strategy-trait.clar
 # Root package files (clarinet dev only)
 /package.json
 /package-lock.json
+deploy-vault-v2.js
