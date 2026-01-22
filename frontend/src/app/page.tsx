@@ -945,7 +945,7 @@ export default function Home() {
         {/* Title */}
         <div className="text-center mb-10 animate-fade-in">
           <h1 className="text-4xl md:text-5xl font-display mb-4 tracking-tight">
-            Earn <span className="text-[var(--stacks-orange)]">{apy}% APY</span> on USDC
+            Earn <span className="text-[var(--stacks-orange)]">&gt;5% APY</span> on USDC
           </h1>
           <p className="text-lg text-[var(--text-muted)]">Bridge, deposit, and earn yield secured by Bitcoin</p>
         </div>
@@ -1112,7 +1112,7 @@ export default function Home() {
               </div>
               <div>
                 <p className="font-semibold text-lg">USDCx Vault</p>
-                <p className="text-sm text-[var(--success)] font-medium">Earning {apy}% APY</p>
+                <p className="text-sm text-[var(--success)] font-medium">Earning &gt;5% APY</p>
               </div>
             </div>
 
