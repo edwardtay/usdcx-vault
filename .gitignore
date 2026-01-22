@@ -1,0 +1,61 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+
+# Build outputs
+.next/
+frontend/.next/
+out/
+dist/
+build/
+
+# Clarinet
+.cache/
+history.txt
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude
+.claude/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Testing
+coverage/
+tests/
+vitest.config.ts
+
+# TypeScript
+*.tsbuildinfo
+
+# Deployment settings (contain mnemonics)
+settings/
+
+# Deployment plans (contain specific addresses)
+deployments/
+
+# Old/dev contract versions (only testnet + mainnet needed)
+contracts/usdcx-vault.clar
+contracts/usdcx-vault-v2.clar
+contracts/mock-usdcx.clar
+contracts/mock-yield-strategy.clar
+contracts/yield-strategy-trait.clar
+
+# Root package files (clarinet dev only)
+/package.json
+/package-lock.json

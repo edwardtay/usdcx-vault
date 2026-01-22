@@ -1,0 +1,56 @@
+[project]
+name = "usdcx-vault"
+description = "A DeFi Savings Protocol for USDCx on Stacks - Bitcoin's L2"
+authors = []
+telemetry = false
+cache_dir = "./.cache"
+
+# SIP-010 trait must be deployed first
+[contracts.sip-010-trait]
+path = "contracts/sip-010-trait.clar"
+clarity_version = 2
+epoch = 2.5
+
+[contracts.mock-usdcx]
+path = "contracts/mock-usdcx.clar"
+clarity_version = 2
+epoch = 2.5
+
+[contracts.usdcx-vault]
+path = "contracts/usdcx-vault.clar"
+clarity_version = 2
+epoch = 2.5
+
+[contracts.yield-strategy-trait]
+path = "contracts/yield-strategy-trait.clar"
+clarity_version = 2
+epoch = 2.5
+
+[contracts.mock-yield-strategy]
+path = "contracts/mock-yield-strategy.clar"
+clarity_version = 2
+epoch = 2.5
+
+[contracts.usdcx-vault-v2]
+path = "contracts/usdcx-vault-v2.clar"
+clarity_version = 2
+epoch = 2.5
+
+[contracts.usdcx-vault-testnet]
+path = "contracts/usdcx-vault-testnet.clar"
+clarity_version = 2
+epoch = 2.5
+
+[contracts.usdcx-vault-mainnet]
+path = "contracts/usdcx-vault-mainnet.clar"
+clarity_version = 2
+epoch = 2.5
+
+[repl.analysis]
+passes = ["check_checker"]
+
+[repl.analysis.check_checker]
+strict = false
+trusted_sender = false
+trusted_caller = false
+callee_filter = false
