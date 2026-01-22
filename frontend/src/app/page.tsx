@@ -246,10 +246,10 @@ export default function Home() {
     }
   }, [ethMenuOpen, stacksMenuOpen]);
 
-  // Load pending transactions on mount
+  // Load pending transactions on mount - auto-remove after 30 min
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem('pendingTxs') || '[]');
-    const recent = saved.filter((tx: PendingTx) => Date.now() - tx.startTime < 2 * 60 * 60 * 1000);
+    const recent = saved.filter((tx: PendingTx) => Date.now() - tx.startTime < 30 * 60 * 1000);
     setPendingTxs(recent);
     if (recent.length !== saved.length) {
       localStorage.setItem('pendingTxs', JSON.stringify(recent));
