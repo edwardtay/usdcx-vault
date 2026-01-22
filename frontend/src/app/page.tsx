@@ -317,15 +317,19 @@ export default function Home() {
 
   const fetchStacksData = useCallback(async (address: string) => {
     try {
-      const [balance, vaultInfo] = await Promise.all([
+      const [balance, vaultInfo, userPosition] = await Promise.all([
         getUSDCxBalance(address),
         getVaultInfo(),
+        getUserPosition(address),
       ]);
       setUsdcxBalance(balance);
-      // Note: Vault balance starts at 0 for real USDCx - old mock deposits not tracked
-      // Real vault position will be tracked once user deposits real USDCx
-      setVaultBalance(BigInt(0));
-      setVaultShares(BigInt(0));
+      if (userPosition) {
+        setVaultBalance(userPosition.balance);
+        setVaultShares(userPosition.shares);
+      } else {
+        setVaultBalance(BigInt(0));
+        setVaultShares(BigInt(0));
+      }
       if (vaultInfo) setApy(vaultInfo.annualYieldRate / 100);
     } catch (err) {
       console.error('Error fetching Stacks data:', err);
