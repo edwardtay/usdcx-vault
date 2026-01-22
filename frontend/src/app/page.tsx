@@ -29,6 +29,7 @@ import {
   getNetwork,
   getBurnForBridgeOptions,
   REAL_USDCX,
+  MIN_BRIDGE_BACK_AMOUNT,
 } from '@/lib/stacks';
 import {
   getEthUsdcBalance,
@@ -943,12 +944,8 @@ export default function Home() {
       <div className="max-w-6xl mx-auto px-6 py-8">
         {/* Title */}
         <div className="text-center mb-10 animate-fade-in">
-          <div className="inline-flex items-center gap-2 apy-badge mb-6">
-            <span className="w-2 h-2 rounded-full bg-[var(--stacks-orange)] animate-pulse"></span>
-            <span>Live on Testnet</span>
-          </div>
           <h1 className="text-4xl md:text-5xl font-display mb-4 tracking-tight">
-            Earn <span className="text-[var(--stacks-orange)] text-glow-orange">{apy}% APY</span> on USDC
+            Earn <span className="text-[var(--stacks-orange)]">{apy}% APY</span> on USDC
           </h1>
           <p className="text-lg text-[var(--text-muted)]">Bridge, deposit, and earn yield secured by Bitcoin</p>
         </div>
@@ -1072,7 +1069,7 @@ export default function Home() {
                 {ethAddress && usdcxBalance > BigInt(0) && (
                   <div className="pt-3 border-t border-[var(--border-light)] space-y-3">
                     <div>
-                      <label className="text-xs text-[var(--text-muted)]">Bridge to Ethereum</label>
+                      <label className="text-xs text-[var(--text-muted)]">Bridge to Ethereum (min $4.80)</label>
                       <div className="flex gap-2 mt-1">
                         <input
                           type="number"
@@ -1086,12 +1083,15 @@ export default function Home() {
                         </button>
                       </div>
                     </div>
+                    {bridgeBackAmount && parseFloat(bridgeBackAmount) > 0 && parseUSDCx(bridgeBackAmount) < MIN_BRIDGE_BACK_AMOUNT && (
+                      <p className="text-xs text-[var(--error)]">Minimum $4.80 required for bridge fees</p>
+                    )}
                     <button
                       onClick={handleBridgeBack}
-                      disabled={bridgeBackLoading || !bridgeBackAmount || parseFloat(bridgeBackAmount) <= 0 || parseUSDCx(bridgeBackAmount) > usdcxBalance}
+                      disabled={bridgeBackLoading || !bridgeBackAmount || parseFloat(bridgeBackAmount) <= 0 || parseUSDCx(bridgeBackAmount) > usdcxBalance || parseUSDCx(bridgeBackAmount) < MIN_BRIDGE_BACK_AMOUNT}
                       className="btn-secondary w-full text-sm py-2"
                     >
-                      {bridgeBackLoading ? <IconLoader className="w-4 h-4" /> : '← Bridge to ETH'}
+                      {bridgeBackLoading ? <IconLoader className="w-4 h-4" /> : '← Bridge to ETH (~25 min)'}
                     </button>
                   </div>
                 )}
