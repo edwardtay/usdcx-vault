@@ -60,3 +60,4 @@ contracts/yield-strategy-trait.clar
 /package.json
 /package-lock.json
 deploy-vault-v2.js
+.claude/
